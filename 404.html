@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - BitBlock Server Offline</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --maincolor: rgb(246, 243, 238);
+      --button-border: 2px solid #000;
+      --button-bg: #fff;
+      --button-font: 'Press Start 2P', monospace;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: var(--maincolor);
+      color: #111;
+      font-family: Doto, sans-serif;
+      font-weight: 800;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      width: 70%;
+    }
+    .icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+    a.button {
+      padding: 15px 30px;
+      background: var(--button-bg);
+      color: #111;
+      text-decoration: none;
+      border: var(--button-border);
+      border-bottom-width: 4px;
+      font-family: var(--button-font);
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    a.button:active {
+      transform: translateY(2px);
+      border-bottom-width: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="maze/icons/server-off.svg" alt="Server Offline" class="icon" />
+    <h1>BitBlock Server Offline</h1>
+    <p>We're sorry, but the BitBlock servers are currently offline or experiencing technical difficulties.<br>
+       Please try again later.</p>
+    <a href="https://emexos.github.io/home/maze/" class="button">Return to Home</a>
+  </div>
+</body>
+</html>

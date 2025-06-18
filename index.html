@@ -1,0 +1,47 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BitBlock Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="home-container">
+    <h1>Welcome to BitBlock v1</h1>
+    <div class="home-buttons">
+      <button id="editorBtn">BitBlock Editor    </button>
+    </div>
+    <div class="home-buttons">
+      <button id="gameBtn">Singleplayer Game</button>
+      <a id="openEditorBtn" href=""></a>
+    </div>
+    <script>
+      const urls = [
+        "https://emexos.github.io/BitBlock/editor.html",
+        "https://emexos.github.io/home/maze/editor.html",   // Backup 1
+        "https://BitBlock.github.io/BB/pcx/editor.html"     /* Backup 2 */ ];
+      document.getElementById("openEditorBtn").addEventListener("click", async () => {
+        for (let url of urls) {
+          try { const res = await fetch(url, { method: 'HEAD', mode: 'no-cors' }); 
+            window.location.href = url;
+            return;
+          } catch (e) { console.warn("Fehlgeschlagen:", url); }
+        } alert("Keine der Adressen ist erreichbar.");
+      });
+    </script>
+  </div>
+
+  <script>
+    document.getElementById('editorBtn').addEventListener('click', () => {
+      window.location.href = 'editor.html';
+    });
+    document.getElementById('gameBtn').addEventListener('click', () => {
+      window.location.href = 'game.html';
+    });
+  </script>
+</body>
+</html>

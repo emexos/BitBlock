@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BitBlock v1</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="opt">
+    <button id="optBtn">
+      <img src="icons/menu.svg" alt="Menu icon" />
+    </button>
+
+    <button id="downloadBtn"></button>
+    <button id="uploadBtn"></button>
+    <button id="playBtn">
+      <img src="icons/game.svg" alt="Download"> ​  play
+    </button>
+    
+  </div>
+
+  <div id="initialModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close-btn" id="modalClose">×</button>
+        <!--TODO:
+        - icons/x.svg
+        - dragable windpw
+        -->
+      </div>
+      <div class="modal-body">
+        <p>Please don’t click 'Generate new map' too quickly, <br>
+           because the site or your browser may freeze, <br>
+           We are currently working on this issue, <br>
+           a fix will be available soon</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="options">
+    <div class="Building-section">
+      <h2>Building</h2>
+
+      <hr>
+      <div class="buttons">
+          <button id="placeS" class="tool-btn">S</button>
+          <button id="placeM" class="tool-btn">M</button>
+          <button id="placeBlock" class="tool-btn">B</button>
+          <button id="eraser" class="tool-btn">E</button>
+          <button id="placeDoor" class="tool-btn">D</button>
+          <button id="placePlate" class="tool-btn">P</button>
+          <button id="placeSpawn" class="tool-btn">W</button>
+      </div>
+    </div>
+    <div class="bottom">
+    <button class="settingsBtn">
+      <img src="icons/settings.svg" alt="settings" />
+    </button>
+
+    </div>
+    <div class="version">BitBlock v1 – by Jon 2025</div>
+  </div>
+  <button id="btn"> -> Generate new Map <- </button>
+  <canvas id="mazeCanvas"></canvas>
+
+  <script src="main.js"></script>
+</body>
+</html>
+

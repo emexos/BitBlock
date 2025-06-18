@@ -1,0 +1,291 @@
+:root {
+  --cellsize: 20px;
+  --mazeborder: 2;
+  --gridcolor: #ccc;
+  --hovercolor: #44444456;
+  --maincolor: rgb(246, 243, 238);
+}
+
+/* Reset & Box-Sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #eee;
+  color: #111;
+  font: 18px sans-serif;
+  position: relative;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: gray;
+  margin: 20px 20px 10px 10px;
+}
+
+/* Buttons */
+button,
+.tool-btn,
+.settingsBtn,
+.close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+button {
+  padding: 10px;
+  background: #fff;
+  color: #111;
+  border: 2px solid #000;
+  border-bottom-width: 4px;
+  font-family: 'Press Start 2P', monospace;
+}
+
+h1 {
+  font: 900 21px 'Press Start 2P';
+}
+
+/* Spezifische Buttons */
+#downloadBtn,
+#uploadBtn,
+#playBtn,
+#editorBtn,
+#gameBtn {
+  font: 900 18px 'Doto';
+}
+
+#btn {
+  padding: 22px 42px;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+#optBtn,
+#downloadBtn,
+#uploadBtn,
+#playBtn {
+  position: fixed;
+  top: 8px;
+  padding: 10px 14px;
+  z-index: 11;
+  transition: transform 0.2s ease-in, background-color 0.2s ease-out;
+  transform: scale(1);
+}
+
+#optBtn:hover,
+#downloadBtn:hover,
+#uploadBtn:hover,
+#playBtn:hover {
+  transform: scale(1.03);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+#downloadBtn { left: 20px; }
+#uploadBtn   { left: 180px; }
+#playBtn     { left: 319px; }
+
+#optBtn {
+  right: 20px;
+  transition: none;
+}
+
+#optBtn.open {
+  background: none;
+  border: none;
+  top: 10px;
+}
+
+/* Sidebar */
+#options {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  height: 100%;
+  background: #fff;
+  border-left: 2px solid #000;
+  transition: right 0.3s ease;
+  z-index: 10;
+  overflow-y: auto;
+  padding-bottom: 40px; /* Platz für Version */
+}
+
+#options.open { right: 0; }
+
+#options h2 {
+  font-family: 'Press Start 2P', monospace;
+  margin: 10px;
+  text-align: left;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.tool-btn {
+  flex: 1 1 calc(33.333% - 20px);
+  max-width: 60px;
+  padding: 10px;
+  background: #ddd;
+  border: 2px solid transparent;
+}
+
+.tool-btn.active {
+  border-color: #111;
+  background: #ccc;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9;
+}
+
+.settingsBtn {
+  background: var(--maincolor);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: #fff;
+  color: #111;
+  border: 2px solid #000;
+  width: 80%;
+  max-width: 600px;
+  height: 20%;
+  font: 900 18px 'Doto';
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  height: 30px;
+  background: #ccc;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 8px;
+  border-bottom: 2px solid #000;
+}
+
+.modal-body {
+  padding: 20px;
+  text-align: left;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font: 16px 'Press Start 2P', monospace;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.menu {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  width: 200px;
+  background: #fff;
+  border: 2px solid #000;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  padding: 20px 20px 60px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.menu.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#maze {
+  position: relative;
+  width: calc(40 * var(--cellsize));
+  height: calc(40 * var(--cellsize));
+  border: var(--mazeborder) solid #111;
+  overflow: auto;
+  background: var(--maincolor);
+}
+
+#mazeCanvas {
+  image-rendering: pixelated;
+  border: 2px solid #000;
+  max-width: 100%;
+  height: auto;
+}
+
+.version {
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Doto';
+  font-size: .8rem;
+  font-weight: 900;
+}
+
+/* Optimierte Media Query */
+@media (max-width: 800px) {
+  :root {
+    --cellsize: 14px;
+  }
+
+  /* Sidebar unten & full-width */
+  #options {
+    top: auto;
+    bottom: 56px;
+    right: 0;
+    width: 100%;
+    height: auto;
+    border-left: none;
+    border-top: 2px solid #000;
+    padding-bottom: 40px;
+  }
+
+  .buttons {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .tool-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .btn-text {
+    display: none;
+  }
+}

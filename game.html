@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maze Game</title>
+  <link rel="stylesheet" href="game.css">
+  <script src="game.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="controls">
+    <label for="uploadInput" id="uploadLabel">
+      <img src="icons/file-up.svg" alt="Upload">upload World
+    </label>
+    <input type="file" id="uploadInput" accept=".json" hidden />
+    <span> - BitBlock Singleplayer v1</span>
+  </div>
+  <div id="maze">
+    <canvas id="mazeCanvas"></canvas>
+  </div>
+</body>
+</html>
