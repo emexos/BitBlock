@@ -15,26 +15,11 @@
   <div class="home-container">
     <h1>Welcome to BitBlock v1</h1>
     <div class="home-buttons" style=" margin-bottom: 10px; ">
-      <button id="editorBtn">BitBlock Editor    </button>
+      <button id="editorBtn">BitBlock Editor</button>
     </div>
     <div class="home-buttons">
       <button id="gameBtn">Singleplayer Game - beta</button>
-      <a id="openEditorBtn" href=""></a>
     </div>
-    <script>
-      const urls = [
-        "https://emexos.github.io/BitBlock/pxc/editor.html",
-        "https://emexos.github.io/home/maze/editor.html",   // Backup 1
-        "https://BitBlock.github.io/BB/pcx/editor.html"     /* Backup 2 */ ];
-      document.getElementById("openEditorBtn").addEventListener("click", async () => {
-        for (let url of urls) {
-          try { const res = await fetch(url, { method: 'HEAD', mode: 'no-cors' }); 
-            window.location.href = url;
-            return;
-          } catch (e) { console.warn("Fehlgeschlagen:", url); }
-        } alert("Keine der Adressen ist erreichbar.");
-      });
-    </script>
   </div>
 
   <script>
