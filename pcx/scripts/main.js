@@ -328,14 +328,14 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     const dlBtn = document.getElementById('downloadBtn');
-    dlBtn.innerHTML = '<img src="icons/file-down.svg" alt="Download">  ​ download';
+    dlBtn.innerHTML = '<img src="../icons/file-down.svg" alt="">  ​ download';
     dlBtn.addEventListener('click', () => onDownload('json'));
     dlBtn.addEventListener('contextmenu', e => { e.preventDefault(); onDownload('dat'); });
 
     const ulBtn = document.getElementById('uploadBtn');
-    ulBtn.innerHTML = '<img src="icons/file-up.svg" alt="Upload">  ​ upload';
+    ulBtn.innerHTML = '<img src="../icons/file-up.svg" alt="">  ​ upload';
     ulBtn.addEventListener('click', () => {
-        const input = document.createElement('input'); input.type = 'file'; input.accept = '.json,.dat';
+        const input = document.createElement('input'); input.type = 'file'; input.accept = '.json';
         input.addEventListener('change', onUpload); input.click();
     });
 
