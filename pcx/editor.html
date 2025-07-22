@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editor | BitBlock</title>
   <link rel="stylesheet" href="../styles/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@900&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <link rel="icon" type="image/jpeg" href="../icons/web/BitBlock.jpg">
   <link rel="shortcut icon" href="../icons/web/BitBlock.jpg">
 </head>
@@ -20,10 +25,10 @@
     <button id="uploadBtn"></button>
     <button id="playBtn">
       <img src="../icons/game.svg" alt=""> ​  play
+      <a href="game.html"></a>
     </button>
     
   </div>
-
   <div id="initialModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -45,7 +50,6 @@
   <div id="options">
     <div class="Building-section">
       <h2>Building</h2>
-
       <hr>
       <div class="buttons">
           <button id="placeS" class="tool-btn">S</button>
@@ -57,18 +61,22 @@
           <button id="placeSpawn" class="tool-btn">W</button>
       </div>
     </div>
-    <div class="bottom">
-    <button class="settingsBtn">
-      <img src="../icons/settings.svg" alt="S" />
-    </button>
-
+    <div class="Theme-section">
+      <hr>
+      <div class="buttons theme-buttons">
+        <button id="concreteTheme" class="tool-btn theme-btn active">concrete</button>
+        <button id="brickTheme" class="tool-btn theme-btn">brick</button>
+        <button id="sandTheme" class="tool-btn theme-btn">sand</button>
+      </div>
     </div>
+
     <div class="version">BitBlock v1 – by Jon 2025</div>
   </div>
-  <button id="btn"> -> Generate new Map <- </button>
+  <button id="btn">Generate new Map</button>
   <canvas id="mazeCanvas"></canvas>
-
-  <script src="scripts/main.js"></script>
+  
+  <script type="module" src="scripts/main.js"></script>
 </body>
 </html>
+
 
