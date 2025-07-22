@@ -1,12 +1,11 @@
 :root {
-  --cellsize: 20px;
+  --cellsize: 16px;
   --mazeborder: 2;
   --gridcolor: #ccc;
   --hovercolor: #44444456;
   --maincolor: rgb(246, 243, 238);
 }
 
-/* Reset & Box-Sizing */
 * {
   margin: 0;
   padding: 0;
@@ -61,6 +60,9 @@ h1 {
 #uploadBtn,
 #playBtn,
 #editorBtn,
+#exportBtn,
+#redoBtn,
+#undoBtn,
 #gameBtn {
   font: 900 18px 'Doto';
 }
@@ -74,6 +76,9 @@ h1 {
 #optBtn,
 #downloadBtn,
 #uploadBtn,
+#redoBtn,
+#undoBtn,
+#exportBtn,
 #playBtn {
   position: fixed;
   top: 8px;
@@ -86,6 +91,9 @@ h1 {
 #optBtn:hover,
 #downloadBtn:hover,
 #uploadBtn:hover,
+#redoBtn:hover,
+#undoBtn:hover,
+#exportBtn:hover,
 #playBtn:hover {
   transform: scale(1.03);
   background-color: rgba(255, 255, 255, 0.06);
@@ -94,6 +102,9 @@ h1 {
 #downloadBtn { left: 20px; }
 #uploadBtn   { left: 180px; }
 #playBtn     { left: 319px; }
+#undoBtn     { left: 437px; }
+#redoBtn     { left: 550px; }
+#exportBtn   { left: 664px; }
 
 #optBtn {
   right: 20px;
@@ -156,14 +167,38 @@ h1 {
   z-index: 9;
 }
 
-.settingsBtn {
-  background: var(--maincolor);
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+.version {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Doto';
+  font-size: .7rem;
+  font-weight: 900;
 }
 
+.settingsBtn {
+  position: absolute;
+  bottom: 15px;
+  right: 0px;
+  background: var(--maincolor);
+  border: none;
+  border-radius: 50px 0 0 50px;
+  width: 40px;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.settingsBtn img {
+  width: 30px;
+  height: 30px;
+  right: 5px;
+}
+
+.settingsBtn.hidden {
+  display: none !important;
+}
 .modal {
   position: fixed;
   top: 0; left: 0;
@@ -247,26 +282,34 @@ h1 {
   height: auto;
 }
 
-.version {
+.theme-buttons {
   position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-  font-family: 'Doto';
-  font-size: .8rem;
-  font-weight: 900;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 20px;
 }
 
-/* Optimierte Media Query */
+.theme-btn {
+  flex: 1;
+  max-width: none;
+  padding: 15px;
+  font-family: 'Doto', sans-serif;
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
 @media (max-width: 800px) {
   :root {
     --cellsize: 14px;
   }
-
-  /* Sidebar unten & full-width */
   #options {
     top: auto;
-    bottom: 56px;
+    bottom: 0px;
     right: 0;
     width: 100%;
     height: auto;
@@ -274,18 +317,78 @@ h1 {
     border-top: 2px solid #000;
     padding-bottom: 40px;
   }
-
   .buttons {
     gap: 6px;
     padding: 6px;
   }
-
   .tool-btn {
     width: 40px;
     height: 40px;
+    border-width: 3px;
   }
-
   .btn-text {
     display: none;
+  }
+  #downloadBtn,
+  #uploadBtn,
+  #playBtn {
+    padding: 6px 8px;
+    font-size: 0;
+    line-height: var(--cellsize);
+  }
+  #downloadBtn { left: 20px; }
+  #uploadBtn   { left: 70px; }
+  #playBtn     { left: 120px; }
+  #optBtn {
+    right: 20px;
+    transition: none;
+  }
+
+  .Building-section h2 {
+    display: none;
+  }
+
+  .theme-buttons {
+    position: static;
+    margin-top: 10px;
+    padding: 0 6px;
+  }
+
+  .theme-btn {
+    padding: 8px;
+    font-size: 10px;
+    
+  }
+
+  .Building-section {
+    margin-bottom: 5px;
+  }
+
+  hr {
+    margin: 10px 6px 5px 6px;
+  }
+
+  #btn {
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    margin-top: 50px;
+  }
+
+  #options {
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  #options.open {
+    transform: translateY(0);
+  }
+
+  #mazeCanvas {
+    transition: margin-bottom 0.3s ease;
+  }
+
+  #options.open + #btn + #mazeCanvas {
+    margin-bottom: 180px;
   }
 }
