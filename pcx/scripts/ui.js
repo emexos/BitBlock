@@ -106,7 +106,6 @@ export function setupUI() {
     }
 
     const dlBtn = document.getElementById('downloadBtn');
-    dlBtn.innerHTML = `<img src="../../icons/file-down.svg" alt="Download"> <span class="btn-text">  ​ download</span>`;
     dlBtn.addEventListener('click', () => onDownload('json'));
     dlBtn.addEventListener('contextmenu', (e) => {
         e.preventDefault();
@@ -114,7 +113,6 @@ export function setupUI() {
     });
 
     const ulBtn = document.getElementById('uploadBtn');
-    ulBtn.innerHTML = `<img src="../../icons/file-up.svg" alt="Upload"> <span class="btn-text">  ​ upload</span>`;
     ulBtn.addEventListener('click', () => {
         const input = document.createElement('input');
         input.type = 'file';
